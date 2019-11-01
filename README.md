@@ -2,7 +2,7 @@
 
 Android App that performs actions set by user automatically based on location and time.
 
-##Introduction
+## Introduction
 
 We've all been there, that embarassing moment when our phones ring in class. With split Personality you don't have to worry about it anymore. You can preset a profile in split personality such that your phone automatically becomes silent in class. It doesn't have to stop there , Split personality is capable of fully automating your device. Got a bug that you'd like to fix or would like to add a feature? Follow the steps below to start contributing.
 
