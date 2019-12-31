@@ -1,6 +1,13 @@
 <resources>
 
     <!-- Base application theme. -->
+
+
+    <style name="Widget.WaveView" parent="@android:style/Widget">
+        <item name="waveStrokeWidth">1dp</item>
+        <item name="waveColor">#000000</item>
+        <item name="waveGap">16dp</item>
+    </style>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
