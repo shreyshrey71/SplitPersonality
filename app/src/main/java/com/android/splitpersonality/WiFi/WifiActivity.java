@@ -124,11 +124,11 @@ public class WifiActivity extends AppCompatActivity {
 
             switch (wifiStateExtra) {
                 case WifiManager.WIFI_STATE_ENABLED:
-                   Log.e("on","on");
+                   Log.e("wifi","on");
                     if (ContextCompat.checkSelfPermission(WifiActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
                             != PackageManager.PERMISSION_GRANTED) {
                         location();
-                        Toast.makeText(WifiActivity.this,"Please give Location! to app",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(WifiActivity.this,"Please give Location Permission to app",Toast.LENGTH_SHORT).show();
 
                     }
                     else {
@@ -137,7 +137,7 @@ public class WifiActivity extends AppCompatActivity {
                     }
                     break;
                 case WifiManager.WIFI_STATE_DISABLED:
-                    Log.e("on","off");
+                    Log.e("wifi","off");
                     listView.setAdapter(null);
                     text.setVisibility(View.VISIBLE);
                     break;
