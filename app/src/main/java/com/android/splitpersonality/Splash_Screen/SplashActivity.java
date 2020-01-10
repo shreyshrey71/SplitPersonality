@@ -8,6 +8,7 @@ import android.os.Handler;
 
 import com.android.splitpersonality.Main_Screen.MainScreenActivity;
 import com.android.splitpersonality.R;
+import com.android.splitpersonality.typewriter;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -17,7 +18,11 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
+        getSupportActionBar().hide();
+        final typewriter ty=(typewriter)findViewById(R.id.type);
+        ty.setText("");
+        ty.setCharacterDelay(100);
+        ty.animateText("SPLIT");
         mHandler=new Handler();
         mHandler.postDelayed(new Runnable() {
             @Override
@@ -25,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
                 Intent intent=new Intent(getApplicationContext(), MainScreenActivity.class);
                 startActivity(intent);
             }
-        },500);
+        },900);
     }
 
     @Override
