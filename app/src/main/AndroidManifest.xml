@@ -16,18 +16,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WiFi.WifiActivity"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
         <activity android:name=".Create_Profile.CreateProfileActivity" />
+        <activity android:name=".qrCode"/>
+        <activity android:name=".qrScanner"/>
         <activity
             android:name=".Main_Screen.MainScreenActivity"
             android:label="@string/title_activity_main_screen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Splash_Screen.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

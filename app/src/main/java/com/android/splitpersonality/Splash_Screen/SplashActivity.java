@@ -8,7 +8,7 @@ import android.os.Handler;
 
 import com.android.splitpersonality.Main_Screen.MainScreenActivity;
 import com.android.splitpersonality.R;
-import com.android.splitpersonality.typewriter;
+
 
 public class SplashActivity extends AppCompatActivity {
 

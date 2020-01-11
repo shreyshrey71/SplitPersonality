@@ -40,7 +40,7 @@ public class ProfileListAdapter extends RecyclerView.Adapter<ProfileListAdapter.
         holder.qrcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in=new Intent(mContext, qrCode.class);
+                Intent in=new Intent(mContext,qrCode.class);
                 in.putExtra("date",profilelist.get(position).getDate());
                 in.putExtra("time",profilelist.get(position).getTime());
                 mContext.startActivity(in);
