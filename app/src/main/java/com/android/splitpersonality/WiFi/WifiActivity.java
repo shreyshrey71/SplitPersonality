@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +42,7 @@ public class WifiActivity extends AppCompatActivity {
     LocationManager locationManager;
     TextView text;
     List<ScanResult> list;
-    ArrayList<String> provider,x,y;
+    ArrayList<String> provider,x,y, bss;
     recyclerAdapter adapter;
     ListView listView;
 
@@ -156,21 +157,34 @@ public class WifiActivity extends AppCompatActivity {
             if(!provider.isEmpty()) provider.clear();
             if(!x.isEmpty()) x.clear();
             if(!y.isEmpty()) y.clear();
-
+            bss= new ArrayList<>();
             String providerName;
 
             // print details
             for (int i = 0; i < list.size(); i++) {
                 providerName = " "+(list.get(i).SSID)+" ("+(list.get(i).BSSID)+" )\n Frequency: "+(list.get(i).frequency)+" MHz\n Strength: "+returnlevel(list.get(i).level);
+                bss.add(list.get(i).BSSID+"");
                 provider.add(providerName);
                 x.add((list.get(i).SSID));
                 y.add(Integer.toString(list.get(i).level));
                 Log.i("pn",providerName);
             }
-            adapter = new recyclerAdapter(WifiActivity.this, provider);
+            adapter = new recyclerAdapter(WifiActivity.this, provider,bss);
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-//            location();
+        }
+    }
+
+    //store bssid for triggering profiles
+    public void fx(View view)
+    {
+        Log.e("aaa",listView.getCount()+"");
+        for(int i=0;i<listView.getCount();i++)
+        {
+            View v = listView.getAdapter().getView(i,null,null);
+            TextView et =  v.findViewById(R.id.bssid);
+            if(et!=null)
+            Log.e("d"+i,et.getText().toString());
         }
     }
 
