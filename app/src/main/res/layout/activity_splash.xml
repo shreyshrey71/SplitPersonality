@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Splash_Screen.SplashActivity"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/gradient"
+    >
 
-    <TextView
+
+
+    <com.android.splitpersonality.Splash_Screen.typewriter
+        android:id="@+id/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/splash_text"
-        android:text="@string/app_name" />
+        android:textSize="36sp"
+        android:shadowColor="#00ccff"
+        android:shadowRadius="2797.0"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:typeface="serif"
+        android:textStyle="bold"
+        />
 
-</RelativeLayout>
+
+</LinearLayout>
