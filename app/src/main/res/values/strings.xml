@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">SplitPersonality</string>
     <string name="title_activity_main_screen">MainScreenActivity</string>
+    <string name="tab_text_1">All Networks</string>
+    <string name="tab_text_2">Saved Networks</string>
 </resources>

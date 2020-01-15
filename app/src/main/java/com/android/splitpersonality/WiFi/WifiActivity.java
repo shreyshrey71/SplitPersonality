@@ -1,8 +1,12 @@
 package com.android.splitpersonality.WiFi;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -10,32 +14,28 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.LocationManager;
-import android.net.ConnectivityManager;
 import android.net.wifi.ScanResult;
-import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.splitpersonality.R;
-import com.google.android.gms.location.LocationRequest;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class WifiActivity extends AppCompatActivity {
+public class WifiActivity extends AppCompatActivity  {
 
     WifiManager manager;
     WifiReceiver receiver;
@@ -68,7 +68,7 @@ public class WifiActivity extends AppCompatActivity {
                     .setMessage("Please enable location")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+//                            startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -146,6 +146,11 @@ public class WifiActivity extends AppCompatActivity {
         }
     };
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
 
     class WifiReceiver extends BroadcastReceiver {
 
@@ -169,9 +174,14 @@ public class WifiActivity extends AppCompatActivity {
                 y.add(Integer.toString(list.get(i).level));
                 Log.i("pn",providerName);
             }
-            adapter = new recyclerAdapter(WifiActivity.this, provider,bss);
-            listView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
+            Log.e("wwwww",provider.toString());
+            SharedPreferences sharedPref = WifiActivity.this.getSharedPreferences("wifi_info",Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString("wifis", provider.toString());
+            editor.putString("bssid", bss.toString());
+            editor.apply();
+            Intent wifiIntent = new Intent(WifiActivity.this,viewpagerr.class);
+            startActivity(wifiIntent);
         }
     }
 
