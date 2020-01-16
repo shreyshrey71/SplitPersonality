@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.splitpersonality.Create_Profile.CreateProfileActivity;
 import com.android.splitpersonality.R;
+import com.android.splitpersonality.SplitTransition;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -53,13 +54,6 @@ public class MainScreenActivity extends AppCompatActivity {
         qrscan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in=new Intent(getApplicationContext(),CreateProfileActivity.class);
-                startActivity(in);
-            }
-        });
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 IntentIntegrator integrator = new IntentIntegrator(MainScreenActivity.this);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
                 integrator.setPrompt("Scan QR code");
@@ -67,6 +61,13 @@ public class MainScreenActivity extends AppCompatActivity {
                 integrator.setBeepEnabled(false);
                 integrator.setBarcodeImageEnabled(true);
                 integrator.initiateScan();
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(), CreateProfileActivity.class);
+                SplitTransition.startActivity(MainScreenActivity.this, intent);
             }
         });
 
