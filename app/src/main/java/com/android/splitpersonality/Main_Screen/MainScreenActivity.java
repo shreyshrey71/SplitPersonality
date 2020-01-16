@@ -50,14 +50,14 @@ public class MainScreenActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         list=prof();
-        qrscan.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in=new Intent(getApplicationContext(),CreateProfileActivity.class);
                 startActivity(in);
             }
         });
-        fab.setOnClickListener(new View.OnClickListener() {
+        qrscan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 IntentIntegrator integrator = new IntentIntegrator(MainScreenActivity.this);
