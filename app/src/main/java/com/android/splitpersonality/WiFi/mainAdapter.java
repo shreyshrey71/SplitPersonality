@@ -25,7 +25,7 @@ public class mainAdapter extends FragmentPagerAdapter {
             case 0:
                 return all_wifi.newInstance();
             case 1:
-                return all_wifi.newInstance();
+                return saved_wifi.newInstance();
             default:
                 return null;
         }

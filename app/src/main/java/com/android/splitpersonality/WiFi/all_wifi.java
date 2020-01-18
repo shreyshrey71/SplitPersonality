@@ -18,12 +18,16 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 
 import com.android.splitpersonality.R;
+import com.google.gson.Gson;
+
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,11 +44,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class all_wifi extends Fragment{
-    private static final String TAG = "SpeedDial";
+    private static final String TAG = "";
     private PageViewModel pageViewModel;
     public all_wifi() {}
     recyclerAdapter adapter;
@@ -65,6 +70,8 @@ public class all_wifi extends Fragment{
         String defaultValue = "none";
         provider = new ArrayList<String>(Arrays.asList(sharedPref.getString("wifis", defaultValue).split(",")));
         bss = new ArrayList<String>(Arrays.asList(sharedPref.getString("bssid", defaultValue).split(",")));
+        SharedPreferences settings = getActivity().getSharedPreferences("checks", Context.MODE_PRIVATE);
+        settings.edit().clear().commit();
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,10 +90,31 @@ public class all_wifi extends Fragment{
                 adapter.notifyDataSetChanged();
             }
         });
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("aaa","aaa");
+                HashMap<String, Pair<String,Boolean>> map = new HashMap<String, Pair<String,Boolean>>();
+                for(int i=0;i<listView.getCount();i++)
+                {
+                    View vi = listView.getAdapter().getView(i,null,null);
+                    TextView name =  vi.findViewById(R.id.wifiname);
+                    TextView bssid = vi.findViewById(R.id.bssid);
+                    CheckBox check = vi.findViewById(R.id.checkBox);
+                    if(check.isChecked())
+                    {
+                        Log.e("d"+i,name.getText().toString());
+                        map.put(bssid.getText().toString(),Pair.create(name.getText().toString(),true));
+                    }
+                }
+                Gson gson = new Gson();
+                String hashMapString = gson.toJson(map);
+                SharedPreferences prefs = getActivity().getSharedPreferences("wifi_saved", Context.MODE_PRIVATE);
+                prefs.edit().putString("bssids", hashMapString).apply();
+
+                SharedPreferences prefs1 = getActivity().getSharedPreferences("wifi_saved", Context.MODE_PRIVATE);
+                String storedHashMapString = prefs1.getString("bssids", "oopsDintWork");
+                Log.e("abcdc1",storedHashMapString);
             }
         });
         return root;
