@@ -64,12 +64,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="General"
+            android:id="@+id/general"
             android:textSize="18sp"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mute"
+            android:id="@+id/mute"
             android:textSize="18sp"/>
 
     </RadioGroup>
@@ -78,6 +80,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Save Profile"
+    android:id="@+id/save"
     android:layout_marginTop="700dp"
     android:background="@drawable/gradient3"
     android:textColor="#F8F6F6"
