@@ -26,19 +26,21 @@
     <Switch
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_below="@+id/bluetooth"
         android:switchPadding="0dp"
         android:gravity="center_horizontal"
         android:id="@+id/airplane"
-
+        android:layout_marginTop="20dp"
         android:paddingRight="60dp"
         android:text="Airplane Mode"
         android:textSize="25sp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="40dp"
         android:textSize="25sp"
+        android:layout_below="@+id/airplane"
+        android:id="@+id/alarm_text"
         android:gravity="center"
         android:textColor="@color/black"
         android:text="Alarm"/>
@@ -46,14 +48,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/time_picker"
-        android:layout_marginTop="220dp"
+        android:layout_below="@+id/alarm_text"
+        android:layout_marginTop="20dp"
         />
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/radio_group"
         android:gravity="center"
-        android:layout_marginTop="600dp">
+        android:layout_below="@+id/time_picker"
+        android:layout_marginTop="20dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,9 +85,10 @@
     android:layout_height="wrap_content"
     android:text="Save Profile"
     android:id="@+id/save"
-    android:layout_marginTop="700dp"
+    android:layout_below="@id/radio_group"
+    android:layout_marginTop="20dp"
     android:background="@drawable/gradient3"
-    android:textColor="#F8F6F6"
+    android:textColor="@color/text_white"
     />
 </RelativeLayout>
 
