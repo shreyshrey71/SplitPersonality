@@ -14,6 +14,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -167,11 +168,26 @@ public class WifiActivity extends AppCompatActivity {
                 y.add(Integer.toString(list.get(i).level));
                 Log.i("pn",providerName);
             }
+            String wifi=getWifiName(c);
+Toast.makeText(c,wifi+"hello this is wifi",Toast.LENGTH_LONG);
             adapter = new recyclerAdapter(WifiActivity.this, provider);
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
 //            location();
         }
+    }
+    public String getWifiName(Context context) {
+        WifiManager manager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        if (manager.isWifiEnabled()) {
+            WifiInfo wifiInfo = manager.getConnectionInfo();
+            if (wifiInfo != null) {
+                NetworkInfo.DetailedState state = WifiInfo.getDetailedStateOf(wifiInfo.getSupplicantState());
+                if (state == NetworkInfo.DetailedState.CONNECTED || state == NetworkInfo.DetailedState.OBTAINING_IPADDR) {
+                    return wifiInfo.getSSID();
+                }
+            }
+        }
+        return null;
     }
 
 }

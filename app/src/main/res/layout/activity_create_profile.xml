@@ -6,10 +6,25 @@
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context=".Create_Profile.CreateProfileActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create Profile"/>
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/buttonAlarm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set Alarm" />
+
+    </LinearLayout>
 
 </RelativeLayout>

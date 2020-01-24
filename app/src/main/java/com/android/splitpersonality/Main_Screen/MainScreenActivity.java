@@ -37,13 +37,14 @@ public class MainScreenActivity extends AppCompatActivity {
     FloatingActionButton qrscan;
     @BindView(R.id.fab)
     FloatingActionButton fab;
+    @BindView(R.id.alarm)
+    FloatingActionButton alarm;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.profile_recycler)
     RecyclerView profileRecycler;
     ArrayList<Profiles> list;
     ProfileListAdapter adapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +62,14 @@ public class MainScreenActivity extends AppCompatActivity {
                 integrator.setBeepEnabled(false);
                 integrator.setBarcodeImageEnabled(true);
                 integrator.initiateScan();
+            }
+        });
+        //it is just to create dummy profile for alarm
+        alarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ala=new Intent(MainScreenActivity.this,CreateProfileActivity.class);
+                SplitTransition.startActivity(MainScreenActivity.this,ala);
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
@@ -106,13 +115,13 @@ public class MainScreenActivity extends AppCompatActivity {
 
     private ArrayList<Profiles>  prof(){
         list=new ArrayList<>();
-
+//dummy profiles to get qr :
         list.add(new Profiles("12/12/2019","12:30pm"));
         list.add(new Profiles("11/12/2029","11:20am"));
         list.add(new Profiles("11/1/2017","3:00pm"));
         list.add(new Profiles("12/12/2019","12:30pm"));
         list.add(new Profiles("11/12/2029","11:20am"));
-        //list.add(new Profiles("11/1/2017","3:00pm"));
+
         return list;
     }
 
