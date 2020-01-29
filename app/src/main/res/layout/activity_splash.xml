@@ -10,12 +10,59 @@
     android:background="@drawable/gradient"
     >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient"
+        android:orientation="vertical"
+        android:visibility="visible"
+        tools:visibility="visible">
 
+        <LinearLayout
+            android:id="@+id/toplayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-    <com.android.splitpersonality.Splash_Screen.typewriter
+            android:layout_weight="1"
+            >
+
+            <com.android.splitpersonality.WavesView
+                style="@style/Widget.WaveView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/topwave"
+
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottomlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <com.android.splitpersonality.WavesView
+                style="@style/Widget.WaveView"
+                android:id="@+id/bottomwave"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+ />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.android.splitpersonality.WavesView
+        style="@style/Widget.WaveView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+   <!--<com.android.splitpersonality.Splash_Screen.typewriter
         android:id="@+id/type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:textSize="36sp"
         android:shadowColor="#00ccff"
         android:shadowRadius="2797.0"
@@ -23,7 +70,7 @@
         android:shadowDy="0"
         android:typeface="serif"
         android:textStyle="bold"
-        />
+        />-->
 
 
 </LinearLayout>

@@ -1,15 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    tools:context=".Create_Profile.CreateProfileActivity">
+    android:gravity="center_horizontal"
+    tools:context=".Create_Profile.CreateProfileActivity"
+    android:background="@drawable/bg_for_createprofile">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    >
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:switchPadding="0dp"
+        android:text="Bluetooth"
+        android:layout_marginTop="60dp"
+        android:gravity="center_horizontal"
+        android:id="@+id/bluetooth"
+        android:paddingRight="80dp"
+        android:textSize="25sp" />
 
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bluetooth"
+        android:switchPadding="0dp"
+        android:gravity="center_horizontal"
+        android:id="@+id/airplane"
+        android:layout_marginTop="20dp"
+        android:paddingRight="60dp"
+        android:text="Airplane Mode"
+        android:textSize="25sp" />
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textSize="25sp"
+        android:layout_below="@+id/airplane"
+        android:id="@+id/alarm_text"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:text="Alarm"/>
+    <TimePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Profile"/>
+        android:id="@+id/time_picker"
+        android:layout_below="@+id/alarm_text"
+        android:layout_marginTop="20dp"
+        />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/radio_group"
+        android:gravity="center"
+        android:layout_below="@+id/time_picker"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mode"
+            android:textSize="22sp"/>
 
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="General"
+            android:id="@+id/general"
+            android:textSize="18sp"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mute"
+            android:id="@+id/mute"
+            android:textSize="18sp"/>
+
+    </RadioGroup>
+
+`   <Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Save Profile"
+    android:id="@+id/save"
+    android:layout_below="@id/radio_group"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/gradient3"
+    android:textColor="@color/text_white"
+    />
 </RelativeLayout>
+
+</ScrollView>

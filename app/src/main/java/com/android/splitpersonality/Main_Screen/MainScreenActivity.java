@@ -1,7 +1,10 @@
 package com.android.splitpersonality.Main_Screen;
 
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -18,7 +22,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.splitpersonality.Create_Profile.CreateProfileActivity;
 import com.android.splitpersonality.R;
-import com.android.splitpersonality.SplitTransition;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -51,9 +54,17 @@ public class MainScreenActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         list=prof();
-        qrscan.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
+                Intent in=new Intent(getApplicationContext(),CreateProfileActivity.class);
+                startActivity(in);
+            }
+        });
+        qrscan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 IntentIntegrator integrator = new IntentIntegrator(MainScreenActivity.this);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
                 integrator.setPrompt("Scan QR code");
@@ -61,13 +72,6 @@ public class MainScreenActivity extends AppCompatActivity {
                 integrator.setBeepEnabled(false);
                 integrator.setBarcodeImageEnabled(true);
                 integrator.initiateScan();
-            }
-        });
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), CreateProfileActivity.class);
-                SplitTransition.startActivity(MainScreenActivity.this, intent);
             }
         });
 
