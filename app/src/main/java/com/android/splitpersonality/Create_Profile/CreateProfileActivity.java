@@ -12,6 +12,7 @@ import android.widget.TimePicker;
 import com.android.splitpersonality.R;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class CreateProfileActivity extends AppCompatActivity {
     @BindView(R.id.save)
@@ -36,6 +37,8 @@ public class CreateProfileActivity extends AppCompatActivity {
         blue = false;
         air = false;
         profile = 1;
+
+        ButterKnife.bind(this);
 
 
 
